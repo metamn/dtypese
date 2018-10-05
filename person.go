@@ -12,19 +12,19 @@ type Person struct {
 	Age int
 }
 
-func GeneratePeople(number, min, max int) []int {
-	ret := make([]int, number)
+func GeneratePeople(number, min, max int) []Person {
+	ret := make([]Person, number)
 
 	for i := 0; i < number; i++ {
-		ret[i] = rand.Intn(max-1) + min
+		ret[i] = Person{rand.Intn(max-1) + min}
 	}
 
 	return ret
 }
 
-func HasTwiceAsOld(people []int) bool {
+func HasTwiceAsOld(people []Person) bool {
 	sort.Slice(people, func(i, j int) bool {
-		return people[i] < people[j]
+		return people[i].Age < people[j].Age
 	})
 
 	fmt.Println("The age of people in the list: ", people)
@@ -32,10 +32,10 @@ func HasTwiceAsOld(people []int) bool {
 	first := people[0]
 	last := people[len(people)-1]
 
-	return (2*first <= last)
+	return (2*first.Age <= last.Age)
 }
 
 func main() {
-	people := GeneratePeople(30, 1, 10)
+	people := GeneratePeople(3, 1, 3)
 	fmt.Println("Has twice as old?: ", HasTwiceAsOld(people))
 }
