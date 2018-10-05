@@ -1,7 +1,5 @@
 package main
 
-// https://stackoverflow.com/questions/28999735/what-is-the-shortest-way-to-simply-sort-an-array-of-structs-by-arbitrary-field
-
 import (
 	"fmt"
 	"math/rand"
@@ -36,6 +34,5 @@ func HasTwiceAsOld(people []Person) bool {
 }
 
 func main() {
-	people := GeneratePeople(3, 1, 3)
-	fmt.Println("Has twice as old?: ", HasTwiceAsOld(people))
+	fmt.Println("Has twice as old?: ", HasTwiceAsOld(GeneratePeople(3, 1, 3)))
 }
