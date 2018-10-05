@@ -4,15 +4,17 @@ class Person {
 	}
 
 	static generatePeople(number, min, max) {
-		return [...Array(number).keys()].map(x => Math.floor(Math.random() * (max - min) + min));
+		return [...Array(number).keys()].map(
+			x => new Person(Math.floor(Math.random() * (max - min) + min))
+		);
 	}
 
 	static hasTwiceAsOld( people ) {
-		people.sort((a, b) => a > b);
+		people.sort((a, b) => a.age > b.age);
 
-		console.log('The age of people in the list: ' + people);
+		console.log('The age of people in the list: ' + people.map(p => p.age));
 		console.log('Has twice as old?: ');
 
-		return ( 2 * people[0] <= people[people.length - 1]);
+		return (2 * people[0].age <= people[people.length - 1].age);
 	}
 }
