@@ -1,8 +1,11 @@
 package main
 
+// https://stackoverflow.com/questions/28999735/what-is-the-shortest-way-to-simply-sort-an-array-of-structs-by-arbitrary-field
+
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 )
 
 type Person struct {
@@ -19,8 +22,20 @@ func GeneratePeople(number, min, max int) []int {
 	return ret
 }
 
-func main() {
-	people := GeneratePeople(10, 1, 100)
+func HasTwiceAsOld(people []int) bool {
+	sort.Slice(people, func(i, j int) bool {
+		return people[i] < people[j]
+	})
+
 	fmt.Println("The age of people in the list: ", people)
-	fmt.Println("Has twice as old?: ")
+
+	first := people[0]
+	last := people[len(people)-1]
+
+	return (2*first <= last)
+}
+
+func main() {
+	people := GeneratePeople(30, 1, 10)
+	fmt.Println("Has twice as old?: ", HasTwiceAsOld(people))
 }
