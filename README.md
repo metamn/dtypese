@@ -20,3 +20,8 @@ Notes to self:
 * PHP has a far better random number generator. JS and Go yields the same results.
 * JS is pure beauty
 * Go, at first usage, has some *strange* complexity like fixed width arrays, slicing, `:=` or `=` seems to be the same
+
+
+## Exercise 9.
+
+The DDL/SQL code can be run online at https://www.db-fiddle.com/f/v8vShhzNDMxT1eQ5LTdiEV/0
