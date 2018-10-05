@@ -10,7 +10,11 @@ My main language is PHP. You can find the comments about the approach there.
 * JS code online: https://codepen.io/metamn/pen/OBXzaE
 * Go code online: https://go-sandbox.com/#/GhJVfsaQJoG
 
-(Personal) Notes:
+Notes to Doctype
+
+I write code for others first then for the machine. That's why I don't optimize for density but rather to verbosity. It might not looking elegant and spiffy but is better maintainable, I hope.
+
+Notes to self:
 
 * PHP is surprisingly verbose when written according to standards: 79 vs. 20 vs. 40 LOC
 * PHP has a far better random number generator. JS and Go yields the same results.
