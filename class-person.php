@@ -15,7 +15,7 @@ class Person {
     /**
      * Creates a person with an age.
      *
-     * @param integer $age The age of the person.
+     * @param  integer $age The age of the person.
      * @return void
      */
     public function __construct( $age ) {
@@ -36,7 +36,7 @@ class Person {
         $people = array();
 
         for ( $i = 0; $i < $number; $i++ ) {
-            $people[] = new Person( rand( $min, $max ) );
+            $people[] = new Person(rand($min, $max));
         }
 
         return $people;
@@ -50,7 +50,7 @@ class Person {
      * @link https://duckduckgo.com/?q=php+sort&t=canonical&atb=v92-1&ia=web PHP sort
      * @link https://en.wikipedia.org/wiki/Quicksort
      *
-     * @param array $people The list of people.
+     * @param  array $people The list of people.
      * @return boolean
      */
     public static function has_twice_as_old( $people ) {
