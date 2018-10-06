@@ -1,8 +1,9 @@
 # dtypese
-Test repo
+
+The code repository for exercises 8-10.
 
 
-## Exercise 8.
+## Exercise 8
 
 My main language is PHP. You can find the comments about the approach there.
 
@@ -22,6 +23,9 @@ Notes to self:
 * Go, at first usage, has some *strange* complexity like fixed width arrays, slicing, `:=` or `=` seems to be the same
 
 
-## Exercise 9.
+## Exercise 9
 
 The DDL/SQL code can be run online at https://www.db-fiddle.com/f/v8vShhzNDMxT1eQ5LTdiEV/0
+
+
+## Exercise 10
