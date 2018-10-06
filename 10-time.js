@@ -91,6 +91,20 @@ class TimeSinceApp extends React.Component {
             seconds: diff.seconds()
         }
     }
+
+    tick() {
+        this.setState(state => ({
+            timeSince: this.getTimeSince()
+        }));
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 }
 
 class TimeSinceResult extends React.Component {
