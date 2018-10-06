@@ -5,7 +5,19 @@ const e = React.createElement;
 class TimeSinceApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [], text: '' };
+    
+    this.state = {
+        timeStamp: '',
+        timeSince: {
+            years: '',
+            months: '',
+            days: '',
+            hours: '',
+            minutes: '',
+            seconds: ''
+        }
+    };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -14,67 +26,85 @@ class TimeSinceApp extends React.Component {
     return (
         <div>
             <h3>Time since</h3>
-            <p>How many years, months, days, hours, minutes and seconds that have elapsed since the timestamp</p>
-            <DateList items={this.state.items} />
+
+            <ol>
+                <li>How many years, months, days, hours, minutes and seconds that have elapsed since the timestamp</li>
+                <li>The elapsed time should update in real-time</li>
+            </ol>
+
+            <TimeSinceResult item={this.state} />
+                
             <form onSubmit={this.handleSubmit}>
-            <label htmlFor="new-date">
-                UNIX timestamp: 
-            </label>
-            <input
-                id="new-date"
-                onChange={this.handleChange}
-                value={this.state.text}
-            />
-            <button>
-                Add
-            </button>
+                <label htmlFor="new-timestamp">
+                    Enter UNIX timestamp: 
+                </label>
+
+                <input
+                    id="new-timestamp"
+                    onChange={this.handleChange}
+                    value={this.state.timeStamp}
+                />
+                
+                <button>
+                    Add
+                </button>
             </form>
         </div>
     );
   }
 
   handleChange(e) {
-    this.setState({ text: e.target.value });
+      this.setState({ timeStamp: e.target.value });
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    if (!this.state.text.length) {
-      return;
-    }
-    const newItem = {
-      text: this.getResult(),
-      id: Date.now()
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-      text: ''
-    }));
+      e.preventDefault();
+      
+      if (!this.state.timeStamp.length) {
+          return;
+      }
+      
+      this.setState(state => ({
+        timeSince: this.getTimeSince()
+      }));
   }
+
   
-  getResult() {
-    var timeStamp = this.state.text;
-    var now = moment(new Date());
+  // Displays a timestamp.
+  getTimeSince() {
     var ts = moment("20080627");
+    var now = moment(new Date());
     var diff = moment.duration(now.diff(ts));
-    var years = diff.years();
-    var months = diff.months();
-    var timeSince = years + '/' + months;
-    return timeStamp + ': ' + timeSince;
+
+    return {
+        years: diff.years(),
+        months: diff.months(),
+        days: diff.days(),
+        minutes: diff.minutes(),
+        seconds: diff.seconds()
+    }
   }
 }
 
-class DateList extends React.Component {
-  render() {
-    return (
-        <ul>
-            {this.props.items.map(item => (
-            <li key={item.id}>{item.text}</li>
-            ))}
-        </ul>
-    );
-  }
+class TimeSinceResult extends React.Component {
+    render() {
+        if ('' !== this.props.item.timeStamp) {
+            return (
+                <dl>
+                    <dt>Timestamp</dt>
+                    <dd>{this.props.item.timeStamp}</dd>
+                    <dt>Time passed since:</dt>
+                    {Object.entries(this.props.item.timeSince).map(item => (
+                        <dd>{item[0]} - {item[1]}</dd>
+                    ))}
+                </dl>
+            );
+        } else {
+            return null;
+        }
+    }
 }
+  
 
 const domContainer = document.querySelector('#app');
 ReactDOM.render(e(TimeSinceApp), domContainer);
