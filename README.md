@@ -29,3 +29,9 @@ The DDL/SQL code can be run online at https://www.db-fiddle.com/f/v8vShhzNDMxT1e
 
 
 ## Exercise 10
+
+The code can be found online at https://codepen.io/metamn/pen/OBRXEN
+
+Notes:
+
+* The CSS Grid was made responsible.

@@ -117,7 +117,7 @@ class TimeSinceResult extends React.Component {
                     <dt>Timestamp</dt>
                     <dd>{this.props.item.timeStamp} - {this.props.item.timeHuman}</dd>
                     <dt>Time passed since:</dt>
-                    <dd class="grid">
+                    <dd className="grid">
                         {Object.entries(this.props.item.timeSince).map(item => (
                             <span>{item[1]} {item[0]}</span>
                         ))}
