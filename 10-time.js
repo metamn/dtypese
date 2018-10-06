@@ -31,6 +31,7 @@ class TimeSinceApp extends React.Component {
                 <ol>
                     <li>How many years, months, days, hours, minutes and seconds that have elapsed since the timestamp</li>
                     <li>The elapsed time should update in real-time</li>
+                    <li>Write CSS for the component so that it uses a grid where each time metric (years, months, days, hours, minutes and seconds) is in a separate column</li>
                 </ol>
 
                 <TimeSinceResult item={this.state} />
@@ -87,6 +88,7 @@ class TimeSinceApp extends React.Component {
             years: diff.years(),
             months: diff.months(),
             days: diff.days(),
+            hours: diff.hours(),
             minutes: diff.minutes(),
             seconds: diff.seconds()
         }
@@ -115,9 +117,11 @@ class TimeSinceResult extends React.Component {
                     <dt>Timestamp</dt>
                     <dd>{this.props.item.timeStamp} - {this.props.item.timeHuman}</dd>
                     <dt>Time passed since:</dt>
-                    {Object.entries(this.props.item.timeSince).map(item => (
-                        <dd>{item[0]} - {item[1]}</dd>
-                    ))}
+                    <dd class="grid">
+                        {Object.entries(this.props.item.timeSince).map(item => (
+                            <span>{item[1]} {item[0]}</span>
+                        ))}
+                    </dd>
                 </dl>
             );
         } else {
