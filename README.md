@@ -5,7 +5,7 @@ The code repository for exercises 8-10.
 
 ## Exercise 8
 
-My main language is PHP. You can find the comments about the approach there.
+My main language is PHP. You can find the comments about the solution in the PHP source file. The JS and Go solutions have no inline comments.
 
 * PHP code online: http://sandbox.onlinephpfunctions.com/code/9a60c1aae2340b2b199629b33ccee6860395b89d
 * JS code online: https://codepen.io/metamn/pen/OBXzaE
